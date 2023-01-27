@@ -1,0 +1,101 @@
+.sidebar{
+    background-color: white;
+    color: #D7D7D7;
+    width: 63px;
+    display: flex;
+    flex-direction: column;
+    transition: width 100ms ease;
+    border: 1px solid #D7D7D7;
+   
+
+    &__top{
+        text-align: center;
+
+        padding: 13px 0 30px 0;
+        border-bottom: 1px solid #EBEBEB;
+        width: 100%;
+
+        &-logo{
+            margin-bottom: 33px;
+            .logo-wide{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                
+            }
+        }
+    }
+
+    &__bottom{
+        padding: 30px 0;
+    }
+
+    &__settings{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        li{
+            color: #c4c4c4;
+            font-size: 20px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            padding: 8px 6px;
+            transition: color 200ms ease;
+            p{
+                display: none;
+            }
+
+            &:hover,&.active{
+                color: #42A4DF;
+            }
+
+            &:not(:last-child){
+               margin-bottom: 2px;
+            }
+        }
+
+        &.full{
+            li{
+                display: flex;
+                align-items: center;
+                width: 202px;
+                padding: 8px 6px;
+                border-radius: 5px;
+                p{
+                    display: inline;
+                    font-size: 13px;
+                    color: #626262;
+                    margin-left: 13px;
+                }
+
+                &:hover,&.active{
+                    color: white;
+                    background-color: #42A4DF;
+
+                    p{
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sidebar-full{
+    width: 258px;
+    &__top{
+        }
+    
+    &__settings{
+        li{
+           display: flex;
+
+            &:hover,&.active{
+                color: #42A4DF;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.body{
+    background-color: #F2F2F2;
+    flex: 1;
+    padding: 26px;
+    overflow: scroll;
+
+    & > h3{
+        color: #313131;
+        font-weight: 500;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+}

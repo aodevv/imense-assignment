@@ -1,0 +1,81 @@
+.table{
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    table-layout: fixed;
+    width: 100%;
+
+    thead,tbody{
+        width: 100%;
+
+        tr{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            th{
+                &:first-child, &:nth-child(2){
+                    border-right: 1px solid rgba(0,0,0,0.2);
+                    flex-grow: 0;
+	                flex-shrink: 0;
+                }
+                &:first-child{
+                    flex-basis: 35px; 
+                }
+                &:nth-child(2){
+                    flex-basis: 246px; 
+                }
+                padding: 10px 10px 0 10px;
+                flex: 1;
+                height: 150px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 400;
+                font-size: 11px;
+                color: #737373;
+
+                .table-header{
+                    display: flex;
+                    height: 100%;
+                    flex-direction: column;
+                    position: relative;
+                    p{
+                        position: absolute;
+                        top: 110px;
+                        left: 50%;
+                        min-width: 80px;
+                        transform: translateX(-50%);
+                    }
+                } 
+            }
+
+            td{
+                &:first-child, &:nth-child(2){
+                    border-right: 1px solid rgba(0,0,0,0.2);
+                    flex-grow: 0;
+	                flex-shrink: 0;
+                }
+                &:first-child{
+                    flex-basis: 35px;
+                    font-size: 12;
+                    font-weight: 500;
+                    color: #909090;
+                }
+                &:nth-child(2){
+                    flex-basis: 246px; 
+                }
+                width: 100%;
+                min-height: 50px;
+                flex: 1;
+                border-top: 1px solid rgba(0,0,0,0.2);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-darkGrey: #0f1922;
+  --color-lightGrey: #1f2731;
+  --color-primary: purple;
+  --text-grey: #fffefa99;
+  --text-darkGrey: #0f192299;
+
+  --bs-border-color: #f0eff5;
+  --bs-dropdown-link-hover-bg: #f8f9fa;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}

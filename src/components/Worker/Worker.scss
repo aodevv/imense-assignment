@@ -1,0 +1,39 @@
+.worker{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+
+    &__details{
+        display: flex;
+        align-items: center;
+
+        &-text{
+            margin-left: 5px;
+            h3{
+                font-weight: 400;
+                font-size: 12px;
+                color: #484848;
+                margin-bottom: 2px;
+            }
+    
+            p{
+                font-weight: 400;
+                font-size: 11px;
+                color: #909090;
+            }
+
+        }
+        
+    }
+
+    &__img{
+        width: 34px;
+        height: 34px;
+    }
+
+    &__company{
+        width: 40px;
+        height: 40px;
+    }
+}
