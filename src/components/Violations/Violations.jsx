@@ -2,36 +2,31 @@ import React, { useState, useEffect, useRef } from "react";
 
 import ViolationsPopup from "../ViolationsPopup/Popup";
 
-import "./Violations.scss";
+import { dummyViolations } from "./violationsData";
 
-const dummyViolations = [
-  {
-    id: "#03",
-    img: "./violations_img/v1.png",
-    date: "15/11/22022 10:34",
-    comment:
-      "consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore",
-  },
-  {
-    id: "#07",
-    img: "./violations_img/v2.png",
-    date: "15/11/22022 10:34",
-    comment:
-      "consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore",
-  },
-  {
-    id: "#04",
-    img: "./violations_img/v1.png",
-    date: "15/11/22022 10:34",
-    comment:
-      "consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore",
-  },
-];
+import "./Violations.scss";
 
 const Violations = ({ count }) => {
   const [isClose, setIsClose] = useState(true);
+  const [position, setPosition] = useState("");
+
   let menuRef = useRef();
   let countRef = useRef();
+  // getting the window width size to position popup depending on position of count button
+  const windowWidth = useRef(window.innerWidth);
+
+  const handleCountClick = () => {
+    const countCoords = countRef.current.getBoundingClientRect();
+    const { x, y } = countCoords;
+
+    // if a count button is in the far right of the screen I add a class 'popup-right'
+    // in order shift the position of the poup slightly to the left so id doesn't create and overflow
+
+    if (x > windowWidth.current / 1.1) {
+      setPosition("popup-right");
+    }
+    setIsClose(false);
+  };
 
   useEffect(() => {
     let closeDropdown = (e) => {
@@ -55,13 +50,18 @@ const Violations = ({ count }) => {
       <div className="violations__container">
         <div
           ref={countRef}
-          onClick={() => setIsClose(false)}
-          className={`violations ${count > 5 && "danger"}`}
+          onClick={handleCountClick}
+          className={`violations ${count > 5 && "danger"} ${
+            !isClose && "triangle"
+          }`}
         >
           {count}
         </div>
         {!isClose && (
-          <div ref={menuRef} className="violations-popup__container">
+          <div
+            ref={menuRef}
+            className={`violations-popup__container ${position && position}`}
+          >
             <ViolationsPopup violations={dummyViolations} />
           </div>
         )}

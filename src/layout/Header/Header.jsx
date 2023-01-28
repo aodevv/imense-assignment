@@ -34,6 +34,7 @@ const Header = ({ full, toggleSidebar }) => {
           </ul>
         </div>
         <div className="header__right-user">
+          {/* User DropDown component */}
           <UserDD />
         </div>
       </div>

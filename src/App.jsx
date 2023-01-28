@@ -24,16 +24,6 @@ function App() {
         <SubPages />
         <Body sidebar={sideBar} />
       </div>
-
-      {/* 
-        sidebar
-        right
-          header
-          subPages
-          body
-            content = table
-
-      */}
     </div>
   );
 }

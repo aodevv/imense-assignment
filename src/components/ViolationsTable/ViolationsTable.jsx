@@ -6,98 +6,12 @@ import ImageHeader from "../ImageHeader/ImageHeader";
 import Worker from "../Worker/Worker";
 import Violations from "../Violations/Violations";
 
+import { violations_count } from "./tableData";
+
 import "./ViolationsTable.scss";
 
 const ViolationsTable = () => {
-  const data = React.useMemo(
-    () => [
-      {
-        id: 1,
-        worker: {
-          name: "Blaise DEFLOO",
-          img: "./blaise.png",
-          position: "Manager",
-          company: "./biowanze.png",
-        },
-        protective_gloves: 2,
-        safety_glasses: 0,
-        ear_protection: 0,
-        mask_protection: 10,
-        knee_pads: 0,
-        safety_shoes: 0,
-        coverall: 1,
-        hivis_jackets: 0,
-        safety_harness: 0,
-        face_shield: 3,
-        hard_hat: 0,
-        welding_helmet: 0,
-      },
-      {
-        id: 2,
-        worker: {
-          name: "Blaise DEFLOO",
-          img: "./blaise.png",
-          position: "Manager",
-          company: "./biowanze.png",
-        },
-        protective_gloves: 0,
-        safety_glasses: 2,
-        ear_protection: 0,
-        mask_protection: 0,
-        knee_pads: 0,
-        safety_shoes: 10,
-        coverall: 0,
-        hivis_jackets: 1,
-        safety_harness: 0,
-        face_shield: 0,
-        hard_hat: 0,
-        welding_helmet: 3,
-      },
-      {
-        id: 3,
-        worker: {
-          name: "Blaise DEFLOO",
-          img: "./blaise.png",
-          position: "Manager",
-          company: "./biowanze.png",
-        },
-        protective_gloves: 2,
-        safety_glasses: 0,
-        ear_protection: 0,
-        mask_protection: 10,
-        knee_pads: 0,
-        safety_shoes: 0,
-        coverall: 1,
-        hivis_jackets: 0,
-        safety_harness: 0,
-        face_shield: 3,
-        hard_hat: 0,
-        welding_helmet: 0,
-      },
-      {
-        id: 4,
-        worker: {
-          name: "Blaise DEFLOO",
-          img: "./blaise.png",
-          position: "Manager",
-          company: "./biowanze.png",
-        },
-        protective_gloves: 0,
-        safety_glasses: 2,
-        ear_protection: 0,
-        mask_protection: 0,
-        knee_pads: 0,
-        safety_shoes: 10,
-        coverall: 0,
-        hivis_jackets: 1,
-        safety_harness: 0,
-        face_shield: 0,
-        hard_hat: 0,
-        welding_helmet: 3,
-      },
-    ],
-    []
-  );
+  const data = React.useMemo(() => violations_count, [violations_count]);
 
   const columns = useMemo(
     () => [
@@ -111,69 +25,62 @@ const ViolationsTable = () => {
         Cell: ({ value }) => <Worker worker={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader id="protective_gloves" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="protective_gloves" />,
         accessor: "protective_gloves",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader id="safety_glasses" name="Safety" />,
+        Header: () => <ImageHeader id="safety_glasses" />,
         accessor: "safety_glasses",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader id="mask_protection" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="ear_protection" />,
+        accessor: "ear_protection",
+        Cell: ({ value }) => <Violations count={value} />,
+      },
+      {
+        Header: () => <ImageHeader id="mask_protection" />,
         accessor: "mask_protection",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader id="knee_pads" name="Protective gloves" />,
+        Header: () => <ImageHeader id="knee_pads" />,
         accessor: "knee_pads",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader id="safety_shoes" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="safety_shoes" />,
         accessor: "safety_shoes",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader id="coverall" name="Protective gloves" />,
+        Header: () => <ImageHeader id="coverall" />,
         accessor: "coverall",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader id="hivis_jackets" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="hivis_jackets" />,
         accessor: "hivis_jackets",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader id="safety_harness" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="safety_harness" />,
         accessor: "safety_harness",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader id="face_shield" name="Protective gloves" />,
+        Header: () => <ImageHeader id="face_shield" />,
         accessor: "face_shield",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader id="hard_hat" name="Protective gloves" />,
+        Header: () => <ImageHeader id="hard_hat" />,
         accessor: "hard_hat",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader id="welding_helmet" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="welding_helmet" />,
         accessor: "welding_helmet",
         Cell: ({ value }) => <Violations count={value} />,
       },
@@ -181,14 +88,8 @@ const ViolationsTable = () => {
     []
   );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    allColumns,
-  } = useTable({ columns, data });
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data });
   return (
     <table {...getTableProps()} className="table">
       <thead>
