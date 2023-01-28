@@ -66,6 +66,7 @@
           width: 202px;
           padding: 8px 6px;
           border-radius: 5px;
+          margin-bottom: 2px;
           p {
             display: inline;
             font-size: 13px;
@@ -79,7 +80,7 @@
             background-color: #42a4df;
 
             p {
-              color: white;
+              color: white !important;
             }
           }
         }
@@ -93,10 +94,10 @@
   .sidebar__header {
     &-top {
       border-bottom: 0;
-      padding: 13px 0 20px 0;
+      padding: 13px 0 30px 0;
     }
     &-bottom {
-      padding: 15px 0;
+      padding: 25px 0;
     }
     & > p {
       font-weight: 500;
@@ -105,16 +106,7 @@
       color: B7B7B7;
     }
 
-    &-settings {
-      li {
-        display: flex;
 
-        &:hover,
-        &.active {
-          color: #42a4df;
-        }
-      }
-    }
   }
 }
 
