@@ -11,7 +11,17 @@
     top: 6px;
     left: 20px;
     z-index: 300;
-    width: 150px;
+    width: 162px;
     display: flex;
+
+    li {
+      font-size: 11px;
+      color: #313131;
+
+      &:first-child {
+        color: #989797;
+        margin: 5px 0;
+      }
+    }
   }
 }
