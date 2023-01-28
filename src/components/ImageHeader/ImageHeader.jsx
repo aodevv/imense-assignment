@@ -1,12 +1,14 @@
 import React from "react";
 
-const ImageHeader = ({ img, name }) => {
+import "./ImageHeader.scss";
+
+const ImageHeader = ({ id }) => {
   return (
     <div className="table-header">
       <div className="header-image">
-        <img src={`./violations/${img}.png`} alt={img} />
+        <img src={`./violations/${id}.png`} alt={id} />
       </div>
-      <p>{name}</p>
+      <p>{id.split("_").join(" ")}</p>
     </div>
   );
 };

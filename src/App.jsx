@@ -22,7 +22,7 @@ function App() {
       <div className="right">
         <Header full={sideBar} toggleSidebar={toggleSidebar} />
         <SubPages />
-        <Body />
+        <Body sidebar={sideBar} />
       </div>
 
       {/* 

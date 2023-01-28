@@ -14,14 +14,14 @@ import { RiLogoutBoxRFill } from "react-icons/ri";
 const UserDD = () => {
   const [isClose, setIsClose] = useState(true);
   let menuRef = useRef();
-  let dotsRef = useRef();
+  let openRef = useRef();
 
   useEffect(() => {
     let closeDropdown = (e) => {
       if (!isClose) {
         if (
           !menuRef.current.contains(e.target) &&
-          !dotsRef.current.contains(e.target)
+          !openRef.current.contains(e.target)
         )
           setIsClose(true);
       }
@@ -35,7 +35,7 @@ const UserDD = () => {
   return (
     <div className="user-dd">
       <div
-        ref={dotsRef}
+        ref={openRef}
         onClick={() => setIsClose(!isClose)}
         className="user-dd__menu"
       >

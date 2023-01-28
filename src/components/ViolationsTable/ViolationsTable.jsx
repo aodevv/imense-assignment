@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTable } from "react-table";
 
+import ColumnToggle from "../ColumnToggle/ColumnToggle";
 import ImageHeader from "../ImageHeader/ImageHeader";
 import Worker from "../Worker/Worker";
 import Violations from "../Violations/Violations";
-
-import { cols } from "./tableData";
 
 import "./ViolationsTable.scss";
 
@@ -100,22 +99,10 @@ const ViolationsTable = () => {
     []
   );
 
-  //   safety_glasses: 1,
-  //     ear_protection: 3,
-  //     mask_protection: 4,
-  //     knee_pads: 1,
-  //     safety_shoes: 0,
-  //     coverall: 1,
-  //     hivis_jackets: 0,
-  //     safety_harness: 0,
-  //     face_shield: 1,
-  //     hard_hat: 1,
-  //     welding_helmet: 11,
-
   const columns = useMemo(
     () => [
       {
-        Header: "ID",
+        Header: (obj) => <ColumnToggle obj={obj} />,
         accessor: "id",
       },
       {
@@ -125,71 +112,67 @@ const ViolationsTable = () => {
       },
       {
         Header: () => (
-          <ImageHeader img="protective_gloves" name="Protective gloves" />
+          <ImageHeader id="protective_gloves" name="Protective gloves" />
         ),
         accessor: "protective_gloves",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader img="safety_glasses" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="safety_glasses" name="Safety" />,
         accessor: "safety_glasses",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
         Header: () => (
-          <ImageHeader img="mask_protection" name="Protective gloves" />
+          <ImageHeader id="mask_protection" name="Protective gloves" />
         ),
         accessor: "mask_protection",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader img="knee_pads" name="Protective gloves" />,
+        Header: () => <ImageHeader id="knee_pads" name="Protective gloves" />,
         accessor: "knee_pads",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
         Header: () => (
-          <ImageHeader img="safety_shoes" name="Protective gloves" />
+          <ImageHeader id="safety_shoes" name="Protective gloves" />
         ),
         accessor: "safety_shoes",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader img="coverall" name="Protective gloves" />,
+        Header: () => <ImageHeader id="coverall" name="Protective gloves" />,
         accessor: "coverall",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
         Header: () => (
-          <ImageHeader img="hivis_jackets" name="Protective gloves" />
+          <ImageHeader id="hivis_jackets" name="Protective gloves" />
         ),
         accessor: "hivis_jackets",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
         Header: () => (
-          <ImageHeader img="safety_harness" name="Protective gloves" />
+          <ImageHeader id="safety_harness" name="Protective gloves" />
         ),
         accessor: "safety_harness",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => (
-          <ImageHeader img="face_shield" name="Protective gloves" />
-        ),
+        Header: () => <ImageHeader id="face_shield" name="Protective gloves" />,
         accessor: "face_shield",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
-        Header: () => <ImageHeader img="hard_hat" name="Protective gloves" />,
+        Header: () => <ImageHeader id="hard_hat" name="Protective gloves" />,
         accessor: "hard_hat",
         Cell: ({ value }) => <Violations count={value} />,
       },
       {
         Header: () => (
-          <ImageHeader img="welding_helmet" name="Protective gloves" />
+          <ImageHeader id="welding_helmet" name="Protective gloves" />
         ),
         accessor: "welding_helmet",
         Cell: ({ value }) => <Violations count={value} />,
@@ -198,8 +181,14 @@ const ViolationsTable = () => {
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    allColumns,
+  } = useTable({ columns, data });
   return (
     <table {...getTableProps()} className="table">
       <thead>

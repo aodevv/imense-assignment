@@ -1,0 +1,17 @@
+.column-toggle {
+  position: relative;
+  i {
+    color: #dcdcdc;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .column-dd {
+    position: absolute;
+    top: 6px;
+    left: 20px;
+    z-index: 300;
+    width: 150px;
+    display: flex;
+  }
+}

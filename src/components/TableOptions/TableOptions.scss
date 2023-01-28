@@ -1,0 +1,15 @@
+.table__options {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-controls {
+    display: flex;
+  }
+  h3 {
+    color: #313131;
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
