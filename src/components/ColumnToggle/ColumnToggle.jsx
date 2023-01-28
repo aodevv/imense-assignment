@@ -52,6 +52,9 @@ const ColumnToggle = ({ obj }) => {
             ref={menuRef}
           >
             <Dropdown className="column-dd" closeState={isClose}>
+              <li>
+                <p>Select columns to display</p>
+              </li>
               {allColumns
                 .filter((el) => !(el.id === "id" || el.id === "worker"))
                 .map((element) => {
