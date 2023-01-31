@@ -31,6 +31,9 @@ const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const [curMonth, setcurMonth] = useState(dayjs().month());
   const [curYear, setcurYear] = useState(dayjs().year());
+  const [selecting, setSelecting] = useState(false);
+  const [firstDate, setFirstDate] = useState(null);
+  const [lastDate, setLastDate] = useState(null);
 
   const [openRef, menuRef] = useCloseOutside(isClose, setIsClose);
 
@@ -56,9 +59,32 @@ const Calendar = () => {
     }
   };
 
+  const handleDateSelection = (day) => {
+    if (selecting) {
+      setLastDate(day);
+      setSelecting(false);
+    } else {
+      if (lastDate) {
+        setLastDate(null);
+      }
+      setFirstDate(day);
+      setSelecting(true);
+    }
+  };
+
   useEffect(() => {
     setCurrentMonth(getMonth());
   }, []);
+
+  useEffect(() => {
+    if (firstDate && lastDate) {
+      if (firstDate.$d > lastDate.$d) {
+        const temp = firstDate;
+        setFirstDate(lastDate);
+        setLastDate(temp);
+      }
+    }
+  }, [selecting]);
 
   return (
     <div className="datepicker">
@@ -104,10 +130,16 @@ const Calendar = () => {
             return week.map((day, dyId) => {
               return (
                 <button
-                  className={`${curMonth === day.month() && "active-month"} ${
-                    day.$D === 13 && "selected"
-                  }  `}
+                  className={`${curMonth === day.month() && "active-month"}   ${
+                    ((firstDate?.$d <= day && lastDate?.$d >= day.$d) ||
+                      day === firstDate) &&
+                    "selected"
+                  } ${day === firstDate && lastDate && "first-selected"}
+                  ${day === lastDate && "last-selected"}
+                  ${day.day() === 1 && "isMo-and-selected"}
+                  ${day.day() === 0 && "isSu-and-selected"}`}
                   key={`${wkId}-${dyId}`}
+                  onClick={() => handleDateSelection(day)}
                 >
                   {day.$D}
                 </button>

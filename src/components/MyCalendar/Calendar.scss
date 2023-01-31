@@ -70,6 +70,7 @@
             display: grid;
             grid-template-columns: repeat(7,1fr);
             border-radius: 2px;
+            row-gap: 2px;
 
             & > p{
                 font-weight: 500;
@@ -103,12 +104,12 @@
                 
 
                 &.isSu-and-selected,
-                &.first-selected {
+                &.last-selected {
                     border-top-right-radius: 50%;
                     border-bottom-right-radius: 50%;
                 }
                 &.isMo-and-selected,
-                &.last-selected {
+                &.first-selected {
                     border-top-left-radius: 50%;
                     border-bottom-left-radius: 50%;
                 }
