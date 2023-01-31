@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+
 import DateRangePicker from "@wojtekmaj/react-daterange-picker/dist/entry.nostyle";
 import Search from "../MIX/Search";
 import Select from "../MIX/Select";
-import ExpandBtn from "../MIX/ExpandBtn";
+// import ExpandBtn from "../MIX/ExpandBtn";
+import Calendar from "../MyCalendar/Calendar";
 
 import { BiChevronDown } from "react-icons/bi";
 
@@ -29,7 +31,7 @@ const TableOptions = () => {
           clearIcon={null}
         />
         <Select label="All constractors" name="contractors" />
-        <ExpandBtn />
+        <Calendar />
       </div>
     </div>
   );

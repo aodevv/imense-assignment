@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
 import Dropdown from "../Dropdown/Dropdown";
+
+import { useCloseOutside } from "../Hooks/useCloseOutside";
 
 import "./UserDD.scss";
 import user from "../../assets/user.png";
@@ -13,25 +14,9 @@ import { RiLogoutBoxRFill } from "react-icons/ri";
 
 const UserDD = () => {
   const [isClose, setIsClose] = useState(true);
-  let menuRef = useRef();
-  let openRef = useRef();
 
-  useEffect(() => {
-    let closeDropdown = (e) => {
-      if (!isClose) {
-        if (
-          !menuRef.current.contains(e.target) &&
-          !openRef.current.contains(e.target)
-        )
-          setIsClose(true);
-      }
-    };
-    document.addEventListener("mousedown", closeDropdown);
+  const [openRef, menuRef] = useCloseOutside(isClose, setIsClose);
 
-    return () => {
-      document.removeEventListener("mousedown", closeDropdown);
-    };
-  }, [isClose]);
   return (
     <div className="user-dd">
       <div
@@ -43,54 +28,28 @@ const UserDD = () => {
         <h3>BESIX Group</h3>
         <BiChevronDown />
       </div>
-      <AnimatePresence>
-        {!isClose && (
-          <motion.div
-            initial={{
-              opacity: 0,
-              position: "absolute",
-              right: 0,
-              zIndex: 30,
-            }}
-            animate={{
-              opacity: 1,
-              position: "absolute",
-              right: 0,
-              zIndex: 30,
-            }}
-            exit={{
-              opacity: 0,
-              position: "absolute",
-              right: 0,
-              zIndex: 30,
-            }}
-            transition={{ duration: 0.15 }}
-            ref={menuRef}
-          >
-            <Dropdown closeState={isClose}>
-              <li className="user__description">
-                <p>BESIX Group</p>
-                <p>besix.group@besix.be</p>
-              </li>
-              <div className="divider" />
 
-              <li className="user__option">
-                <BsGearFill />
-                <p>Profile settings</p>
-              </li>
-              <li className="user__option">
-                <MdOutlinePrivacyTip />
-                <p>Our policies</p>
-              </li>
-              <div className="divider" />
-              <li className="user__option">
-                <RiLogoutBoxRFill />
-                <p>Log out</p>
-              </li>
-            </Dropdown>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Dropdown isClose={isClose} menuRef={menuRef} className="">
+        <li className="user__description">
+          <p>BESIX Group</p>
+          <p>besix.group@besix.be</p>
+        </li>
+        <div className="divider" />
+
+        <li className="user__option">
+          <BsGearFill />
+          <p>Profile settings</p>
+        </li>
+        <li className="user__option">
+          <MdOutlinePrivacyTip />
+          <p>Our policies</p>
+        </li>
+        <div className="divider" />
+        <li className="user__option">
+          <RiLogoutBoxRFill />
+          <p>Log out</p>
+        </li>
+      </Dropdown>
     </div>
   );
 };

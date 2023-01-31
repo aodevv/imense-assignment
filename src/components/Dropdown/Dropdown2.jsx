@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import "./Dropdown.scss";
 
-const Dropdown = ({ isClose, menuRef, children, className }) => {
+const Dropdown2 = ({ isClose, menuRef, children, className }) => {
   return (
     <AnimatePresence>
       {!isClose && (
@@ -27,7 +27,7 @@ const Dropdown = ({ isClose, menuRef, children, className }) => {
             right: 0,
             zIndex: 30,
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.5 }}
           ref={menuRef}
         >
           <div className={`dropdown ${className}`}>
@@ -39,4 +39,4 @@ const Dropdown = ({ isClose, menuRef, children, className }) => {
   );
 };
 
-export default Dropdown;
+export default Dropdown2;
