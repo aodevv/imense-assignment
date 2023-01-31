@@ -136,8 +136,8 @@ const Calendar = () => {
                     "selected"
                   } ${day === firstDate && lastDate && "first-selected"}
                   ${day === lastDate && "last-selected"}
-                  ${day.day() === 1 && "isMo-and-selected"}
-                  ${day.day() === 0 && "isSu-and-selected"}`}
+                  ${day.day() === 1 && lastDate && "isMo-and-selected"}
+                  ${day.day() === 0 && lastDate && "isSu-and-selected"}`}
                   key={`${wkId}-${dyId}`}
                   onClick={() => handleDateSelection(day)}
                 >
