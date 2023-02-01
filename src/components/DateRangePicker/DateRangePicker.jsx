@@ -10,7 +10,7 @@ import { getMonth, add0 } from "../../utils/calendarFuncs.utils";
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 
-import "./Calendar.scss";
+import "./DateRangePicker.scss";
 
 const months = [
   "January",
@@ -27,10 +27,10 @@ const months = [
   "December",
 ];
 
-const Calendar = () => {
+const DateRangePicker = () => {
   const [isClose, setIsClose] = useState(true);
-  const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const [curMonth, setcurMonth] = useState(dayjs().month());
+  const [currentMonthData, setCurrentMonthData] = useState(getMonth());
+  const [curMonth, setCurMonth] = useState(dayjs().month());
   const [curYear, setcurYear] = useState(dayjs().year());
   const [selecting, setSelecting] = useState(false);
   const [firstDate, setFirstDate] = useState(null);
@@ -40,23 +40,23 @@ const Calendar = () => {
 
   const prevMonth = () => {
     if (curMonth === 0) {
-      setCurrentMonth(getMonth(curYear - 1, 11));
-      setcurMonth(11);
+      setCurrentMonthData(getMonth(curYear - 1, 11));
+      setCurMonth(11);
       setcurYear(curYear - 1);
     } else {
-      setCurrentMonth(getMonth(curYear, curMonth - 1));
-      setcurMonth(curMonth - 1);
+      setCurrentMonthData(getMonth(curYear, curMonth - 1));
+      setCurMonth(curMonth - 1);
     }
   };
 
   const nextMonth = () => {
     if (curMonth === 11) {
-      setCurrentMonth(getMonth(curYear + 1, 0));
-      setcurMonth(0);
+      setCurrentMonthData(getMonth(curYear + 1, 0));
+      setCurMonth(0);
       setcurYear(curYear + 1);
     } else {
-      setCurrentMonth(getMonth(curYear, curMonth + 1));
-      setcurMonth(curMonth + 1);
+      setCurrentMonthData(getMonth(curYear, curMonth + 1));
+      setCurMonth(curMonth + 1);
     }
   };
 
@@ -75,7 +75,7 @@ const Calendar = () => {
   };
 
   useEffect(() => {
-    setCurrentMonth(getMonth());
+    setCurrentMonthData(getMonth());
   }, []);
 
   useEffect(() => {
@@ -119,10 +119,14 @@ const Calendar = () => {
         </i>
       </div>
 
-      <Dropdown isClose={isClose} menuRef={menuRef} className="calendar">
-        <div className="calendar__header">
+      <Dropdown
+        isClose={isClose}
+        menuRef={menuRef}
+        className="datepicker__calendar"
+      >
+        <div className="datepicker__calendar-header">
           <p>Date range</p>
-          <div className="calendar__header-select">
+          <div className="datepicker__calendar-header__select">
             <p>Custom</p>
             <i>
               <BsChevronDown />
@@ -130,7 +134,7 @@ const Calendar = () => {
           </div>
         </div>
 
-        <div className="calendar__month-select">
+        <div className="datepicker__calendar-month__select">
           <i onClick={prevMonth}>
             <BsChevronLeft />
           </i>
@@ -141,7 +145,7 @@ const Calendar = () => {
             <BsChevronRight />
           </i>
         </div>
-        <div className="calendar__wrapper">
+        <div className="datepicker__calendar-dates">
           <p>Mo</p>
           <p>Tu</p>
           <p>We</p>
@@ -149,7 +153,7 @@ const Calendar = () => {
           <p>Fr</p>
           <p>Sa</p>
           <p>Su</p>
-          {currentMonth.map((week, wkId) => {
+          {currentMonthData.map((week, wkId) => {
             return week.map((day, dyId) => {
               return (
                 <button
@@ -170,7 +174,7 @@ const Calendar = () => {
             });
           })}
         </div>
-        <div className="calendar__btns">
+        <div className="datepicker__btns">
           <button>Cancel</button>
           <button>Apply</button>
         </div>
@@ -179,4 +183,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default DateRangePicker;

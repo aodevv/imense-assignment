@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
-import DateRangePicker from "@wojtekmaj/react-daterange-picker/dist/entry.nostyle";
 import Search from "../MIX/Search";
 import Select from "../MIX/Select";
 // import ExpandBtn from "../MIX/ExpandBtn";
-import Calendar from "../MyCalendar/Calendar";
-
-import { BiChevronDown } from "react-icons/bi";
+import DateRangePicker from "../DateRangePicker/DateRangePicker";
 
 import "./Calendar.scss";
 import "./DateRangePicker.scss";
@@ -14,7 +11,7 @@ import "./TableOptions.scss";
 
 const TableOptions = () => {
   const [workers, setWorkers] = useState("");
-  const [value, onChange] = useState([new Date(), new Date()]);
+
   return (
     <div className="table__options">
       <h3>P.P.E Violations Table</h3>
@@ -24,7 +21,7 @@ const TableOptions = () => {
           placeholder="Search workers"
           handleChange={setWorkers}
         />
-        <Calendar />
+        <DateRangePicker />
         <Select label="All constractors" name="contractors" />
       </div>
     </div>

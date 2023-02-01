@@ -31,7 +31,7 @@
         }
     }
 
-    .calendar{
+    &__calendar{
         padding: 0;
         margin-top: 6px;
         margin-right: 10px;
@@ -43,7 +43,7 @@
 
         
 
-        &__header{
+        &-header{
             padding: 0 10px;
             margin-bottom: 12px;
 
@@ -54,7 +54,7 @@
                 margin-bottom: 10px;
              }
 
-             &-select{
+             &__select{
                 display: flex;
                 width: 129px;
                 justify-content: space-between;
@@ -76,7 +76,7 @@
              }
         }
 
-        &__month-select{
+        &-month__select{
             display: flex;
             justify-content: space-between;
             padding: 0 10px;
@@ -97,7 +97,7 @@
                 color: #313131;
             }
         }
-        &__wrapper{
+        &-dates{
             
             padding: 10px;
             display: grid;
@@ -116,7 +116,7 @@
             button{
                 background-color: transparent;
                 border: none;
-                padding: 6px 0;
+                padding: 7px 0;
                 cursor: pointer;
                 transition: background-color 200ms ease;
                 font-size: 11px;
@@ -153,35 +153,36 @@
             }
         }
 
-        &__btns{
-            display: flex;
-            justify-content: end;
-            padding: 0 10px;
-            
-            button{
-                font-weight: 500;
-                font-size: 12px;
-                background-color: transparent;
-                border: none;
-                padding: 7px 15px;
-                border-radius: 2px;
-                cursor: pointer;
-                transition: all 200ms ease;
-                &:first-child{
-                    color: #B6B6B6;
-                    &:hover {
-                        background-color: rgba(206, 206, 206, 0.205);
-                    }
-                }
+        
 
-                &:last-child{
-                    margin-left: 6px;
-                    background-color: #37C44D;
-                    color: white;
-                    border: 1px solid #28A43C;
+    }
+    &__btns{
+        display: flex;
+        justify-content: end;
+        padding: 0 10px;
+        
+        button{
+            font-weight: 500;
+            font-size: 12px;
+            background-color: transparent;
+            border: none;
+            padding: 7px 15px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 200ms ease;
+            &:first-child{
+                color: #B6B6B6;
+                &:hover {
+                    background-color: rgba(206, 206, 206, 0.205);
                 }
             }
 
+            &:last-child{
+                margin-left: 6px;
+                background-color: #37C44D;
+                color: white;
+                border: 1px solid #28A43C;
+            }
         }
 
     }
