@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-export const getMonth = (year = dayjs().month(), month = dayjs().month()) => {
+export const getMonth = (year = dayjs().year(), month = dayjs().month()) => {
   const firstDayOfTheMonth = dayjs(new Date(year, month, 1)).day();
   const daysInMonth = dayjs(new Date(year, month, 1)).daysInMonth();
   let numOfWeeks = 5;
@@ -25,4 +25,9 @@ export const getMonth = (year = dayjs().month(), month = dayjs().month()) => {
   });
 
   return daysMatrix;
+};
+
+export const add0 = (str) => {
+  if (str.toString().length === 1) return `0${str.toString()}`;
+  return str.toString();
 };

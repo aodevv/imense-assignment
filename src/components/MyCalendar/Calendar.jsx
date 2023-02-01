@@ -5,9 +5,10 @@ import Dropdown from "../Dropdown/Dropdown";
 
 import { useCloseOutside } from "../Hooks/useCloseOutside";
 
-import { getMonth } from "../../utils/calendarFuncs.utils";
+import { getMonth, add0 } from "../../utils/calendarFuncs.utils";
 
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from "react-icons/bs";
+import { BiChevronDown } from "react-icons/bi";
 
 import "./Calendar.scss";
 
@@ -67,6 +68,7 @@ const Calendar = () => {
       if (lastDate) {
         setLastDate(null);
       }
+      console.log(day);
       setFirstDate(day);
       setSelecting(true);
     }
@@ -91,9 +93,30 @@ const Calendar = () => {
       <div
         ref={openRef}
         onClick={() => setIsClose(!isClose)}
-        className="datepicker__btn"
+        className="datepicker__select"
       >
-        <button>Open DP</button>
+        <div className="datepicker__select-dates">
+          {firstDate ? (
+            <p>
+              {add0(firstDate.get("date"))}/{add0(firstDate.get("month") + 1)}/
+              {firstDate.get("year")}
+            </p>
+          ) : (
+            <p>-/-/--</p>
+          )}
+          <div className="divider">•</div>
+          {lastDate ? (
+            <p>
+              {add0(lastDate.get("date"))}/{add0(lastDate.get("month") + 1)}/
+              {lastDate.get("year")}
+            </p>
+          ) : (
+            <p>-/-/--</p>
+          )}
+        </div>
+        <i>
+          <BiChevronDown />
+        </i>
       </div>
 
       <Dropdown isClose={isClose} menuRef={menuRef} className="calendar">

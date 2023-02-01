@@ -24,14 +24,8 @@ const TableOptions = () => {
           placeholder="Search workers"
           handleChange={setWorkers}
         />
-        <DateRangePicker
-          onChange={onChange}
-          value={value}
-          calendarIcon={<BiChevronDown />}
-          clearIcon={null}
-        />
-        <Select label="All constractors" name="contractors" />
         <Calendar />
+        <Select label="All constractors" name="contractors" />
       </div>
     </div>
   );
